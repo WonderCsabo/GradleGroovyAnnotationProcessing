@@ -1,0 +1,17 @@
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile "com.squareup.dagger:dagger-compiler:1.2.2"
+}
+
+gradle.projectsEvaluated {
+    tasks.withType(GroovyCompile).all {
+        it.groovyOptions.javaAnnotationProcessing = true
+        it.groovyOptions.keepStubs = true
+    }
+}
